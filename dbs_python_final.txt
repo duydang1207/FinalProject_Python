@@ -1,0 +1,87 @@
+CREATE DATABASE dbs_qlch;
+use dbs_qlch;
+
+CREATE TABLE PHANLOAI(
+	maPhanLoai VARCHAR(5) NOT NULL PRIMARY KEY,
+	tenLoai VARCHAR(50) NOT NULL
+);
+
+INSERT INTO phanloai VALUES('CPP','CÀ PHÊ PHA PHIN');
+INSERT INTO phanloai VALUES('CPE','CÀ PHÊ ESPRESSO');
+INSERT INTO phanloai VALUES('BMI','BÁNH MÌ');
+INSERT INTO phanloai VALUES('BNH','BÁNH');
+INSERT INTO phanloai VALUES('TRA','TRÀ');
+INSERT INTO phanloai VALUES('PRE','PREEZE');
+INSERT INTO phanloai VALUES('TUK','THỨC UỐNG KHÁC');
+
+
+CREATE TABLE SANPHAM(
+	maSP varchar(5) NOT NULL PRIMARY KEY,
+	tenSP VARCHAR(50) NOT NULL,
+	giaSP int(10) NOT NULL,
+	maPhanLoai VARCHAR(5),
+	FOREIGN KEY (maPhanLoai) REFERENCES PHANLOAI(maPhanLoai)
+);
+
+
+
+INSERT INTO sanpham VALUES('CPP1','PHIN Sữa Đá',29000,'CPP');
+INSERT INTO sanpham VALUES('CPP2','PHIN Đen Đá',35000,'CPP');
+INSERT INTO sanpham VALUES('CPP3','Bạc Xĩu Đá',39000,'CPP');
+
+INSERT INTO sanpham VALUES('CPE1','Espresso/Americano',35000,'CPE');
+INSERT INTO sanpham VALUES('CPE2','Cappuccino/Latte',55000,'CPE');
+INSERT INTO sanpham VALUES('CPE3','Mocha/Caramel Macchiato',59000,'CPE');
+
+INSERT INTO sanpham VALUES('BMI1','Gà Xé',19000,'BMI');
+INSERT INTO sanpham VALUES('BMI2','Cà Ri Gà',20000,'BMI');
+INSERT INTO sanpham VALUES('BMI3','Cá Ngừ',18000,'BMI');
+INSERT INTO sanpham VALUES('BMI4','Chả',15000,'BMI');
+INSERT INTO sanpham VALUES('BMI5','Heo Quay',20000,'BMI');
+INSERT INTO sanpham VALUES('BMI6','Chà Bông',17000,'BMI');
+
+INSERT INTO sanpham VALUES('BNH1','Tiramisu',19000,'BNH');
+INSERT INTO sanpham VALUES('BNH2','Bánh Chuối',19000,'BNH');
+INSERT INTO sanpham VALUES('BNH3','Mousse Đào',29000,'BNH');
+INSERT INTO sanpham VALUES('BNH4','Mousse Cacao',29000,'BNH');
+INSERT INTO sanpham VALUES('BNH5','Phô Mai Trà Xanh',29000,'BNH');
+INSERT INTO sanpham VALUES('BNH6','Phô Mai Chanh Dây',29000,'BNH');
+INSERT INTO sanpham VALUES('BNH7','Phô Mai Caramel',30000,'BNH');
+INSERT INTO sanpham VALUES('BNH8','Sô-Cô-La Highlands',30000,'BNH');
+
+INSERT INTO sanpham VALUES('TRA1','Trà Sen Vàng',49000,'TRA');
+INSERT INTO sanpham VALUES('TRA2','Trà Thạch Đào',49000,'TRA');
+INSERT INTO sanpham VALUES('TRA3','Trà Thanh Đào',49000,'TRA');
+INSERT INTO sanpham VALUES('TRA4','Trà Thạch Vải',49000,'TRA');
+INSERT INTO sanpham VALUES('TRA5','Trà Xanh Đâu Đỏ',49000,'TRA');
+
+INSERT INTO sanpham VALUES('PRE1','Freeze Trà Xanh',59000,'PRE');
+INSERT INTO sanpham VALUES('PRE2','Freeze Sô-cô-la',59000,'PRE');
+INSERT INTO sanpham VALUES('PRE3','Cookies & Cream',59000,'PRE');
+INSERT INTO sanpham VALUES('PRE4','Caramel Phin Freeze',59000,'PRE');
+INSERT INTO sanpham VALUES('PRE5','Classic Phin Freeze',59000,'PRE');
+
+INSERT INTO sanpham VALUES('TUK1','Chanh Đá Xay/ Đá Viên',49000,'TUK');
+INSERT INTO sanpham VALUES('TUK2','Chanh Dây Đá Viên',49000,'TUK');
+INSERT INTO sanpham VALUES('TUK3','Tắc/ Quất Đá Viên',49000,'TUK');
+INSERT INTO sanpham VALUES('TUK4','Sô-Cô-La',59000,'TUK');
+
+CREATE TABLE taikhoan(
+	tenTaiKhoan varchar(30) NOT NULL PRIMARY KEY,
+	matKhau varchar(30) NOT NULL,
+	loaiTaiKhoan varchar(2) NOT NULL
+);
+
+INSERT INTO taikhoan VALUES("admin", "admin","AD");
+
+
+CREATE TABLE hoadon(
+	maHD INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	ngayXuatHD DATETIME NOT NULL,
+	thanhTien INT
+);
+
+CREATE TABLE doanhso(
+	ngayXuatHD DATE NOT NULL PRIMARY KEY,
+	tongTien int NOT NULL
+);
